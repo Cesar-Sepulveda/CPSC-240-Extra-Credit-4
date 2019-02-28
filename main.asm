@@ -17,29 +17,29 @@ ExitProcess PROTO, dwExitCode: DWORD
 
 .data
 	myarray sDWORD N DUP (-5,-4,-3,-2,-1,0,1,2,3,4,5)		;Initializing the array
-	j DWORD ?												;Initializing j
-	k DWORD ?												;Initializing k
+	j DWORD ?							;Initializing j
+	k DWORD ?							;Initializing k
 .code
 
 main PROC
-	mov j,-5												;Setting the value of j
-	mov k, 5												;Setting the value of k
+	mov j,-5							;Setting the value of j
+	mov k, 5							;Setting the value of k
 	mov esi, OFFSET myarray									
-	call ArraySum											;Calling the procedure
+	call ArraySum							;Calling the procedure
 	
 
 	INVOKE ExitProcess, 0
 main ENDP
 
 ArraySum PROC
-	mov esi,0												;Setting the array index
-	mov eax,0												;Setting the sum to 0
-	mov ecx,LENGTHOF myarray								;Getting the number of elements in the array
+	mov esi,0							;Setting the array index
+	mov eax,0							;Setting the sum to 0
+	mov ecx,LENGTHOF myarray					;Getting the number of elements in the array
 
-	L1:														;Starting the loop L1
-		add eax myArray[esi]								;Adding the value
-		add esi,4											;Getting the next value
-	loop L1													;Looping
+	L1:								;Starting the loop L1
+		add eax myArray[esi]					;Adding the value
+		add esi,4						;Getting the next value
+	loop L1								;Looping
 
 	mov TheSum,eax
 	ret
